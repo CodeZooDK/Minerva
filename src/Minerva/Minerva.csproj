@@ -8,7 +8,6 @@
   <ItemGroup>
     <Compile Include="**\*.cs" Exclude="$(GlobalExclude)" />
     <EmbeddedResource Include="**\*.resx" Exclude="$(GlobalExclude)" />
-    <Folder Include="Utils\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace Minerva.Importer
+﻿namespace Minerva.Model
 {
     public class DanishCompanyIndex
     {
