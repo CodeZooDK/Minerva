@@ -70,25 +70,6 @@ namespace Minerva.Importer
             }
         }
 
-        public bool TryWrapCommand(IElasticCommand command, out IEnumerable<string> errors)
-        {
-            if (_client == null)
-            {
-                errors = new[] { "Client was not initialized - maybe you forgot to call ElasticHelper.Initialize in the startup" };
-                return false;
-            }
-            try
-            {
-                return command.TryExecute(_client, out errors);
-            }
-            catch (Exception ex)
-            {
-                Log.Logger.Error("ElasticSearch helper encountered an exception.", ex);
-                errors = new[] { string.Format("Elasticsearch failed - {0}", ex.Message) };
-                return false;
-            }
-        }
-
         public static void SetMap<TIndex>(string newIndexName, Action<PropertiesDescriptor<TIndex>> properties)
             where TIndex : class
         {
