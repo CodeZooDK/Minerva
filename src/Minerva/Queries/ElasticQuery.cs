@@ -11,7 +11,7 @@ namespace Minerva.Queries
 
         protected ElasticQuery(ListOptions listOptions)
         {
-            _listOptions = listOptions;
+            _listOptions = listOptions??new ListOptions();
         }
 
         public ISearchResponse<T> Results { get; protected set; }

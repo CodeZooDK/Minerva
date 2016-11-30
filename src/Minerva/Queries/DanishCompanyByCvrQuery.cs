@@ -9,12 +9,10 @@ namespace Minerva.Queries
     public class DanishCompanyByCvrQuery : ElasticQuery<DanishCompanyIndex>
     {
         private readonly string _cvrNumber;
-        private readonly ListOptions _listOptions;
 
         public DanishCompanyByCvrQuery(string cvrNumber, ListOptions listOptions)
             : base(listOptions)
         {
-            _listOptions = listOptions;
             var regexObj = new Regex(@"[^\d]");
             _cvrNumber = regexObj.Replace(cvrNumber, "");
         }
