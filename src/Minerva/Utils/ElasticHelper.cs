@@ -13,10 +13,8 @@ namespace Minerva.Utils
     public class ElasticHelper
     {
         private static ElasticClient _client;
-        private static string _defaultIndex;
         public static void Initialize(IConfigurationRoot configRoot)
         {
-            _defaultIndex = "xena";
             try
             {
                 var urls = new[]
@@ -30,7 +28,7 @@ namespace Minerva.Utils
                 IConnectionPool connectionPool = new SniffingConnectionPool(urls);
                 var config = new ConnectionSettings(connectionPool).MapDefaultTypeIndices(d =>
                 {
-                    d.Add(typeof(DanishCompanyIndex), $"{_defaultIndex}_danish_cvr");
+                    d.Add(typeof(DanishCompanyIndex), "danish_cvr");
                 });
                 var client = new ElasticClient(config);
                 var ping = client.Ping();

@@ -1,0 +1,5 @@
+FROM microsoft/dotnet
+WORKDIR /src/Minerva.Importer
+COPY /src/Minerva.Importer/out .
+COPY /src/Minerva.Importer/Imports ./Imports
+ENTRYPOINT ["dotnet", "Minerva.Installer.dll"]

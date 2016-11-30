@@ -16,11 +16,11 @@ namespace Minerva.Importer
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .Build();
-            if(!ElasticReIndexHelper.Initialize(Configuration))
-                return;
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
                 .CreateLogger();
+            if (!ElasticReIndexHelper.Initialize(Configuration))
+                return;
             IEnumerable<string> errors;
             if (!new IndexDanishCompaniesCommand("danish_cvr", Configuration).TryExecute(out errors))
                 errors.ForEach(Log.Logger.Error);
